@@ -1,0 +1,56 @@
+<app-header></app-header>
+
+
+
+<p>
+  Hola - Home <br>
+  Vamos al <a [routerLink]="['/contacto']">Contacto</a>
+  <br>
+  Hoy es {{fecha | date:'dd/MM/yyyy'}}
+  Mira: <img [src]="url | image: 'Hola Pipe'" alt="">
+  <!-- | date:'dd/MM/yyyy es un pipe de Angular, para dar formato a la fecha -->
+
+</p>
+
+  <div *ngIf="gatito" (click)="gatito=!gatito">Verdad o Reto</div>
+  <div *ngIf="!gatito" (click)="gatito=!gatito">Falso </div>
+<div *ngFor="let persona of arreglo; let i = index">
+  {{i+1}}
+  {{persona.nombre}}
+  {{persona.apellido}}
+  {{persona.edad}}
+  
+</div>
+<h3>Raised Buttons</h3>
+<div class="button-row">
+  <button mat-raised-button>Basic</button>
+  <button mat-raised-button color="primary">Primary</button>
+  <button mat-raised-button color="accent">Accent</button>
+  <button mat-raised-button color="warn">Warn</button>
+  <button mat-raised-button disabled>Disabled</button>
+  <a mat-raised-button routerLink=".">Link</a>
+</div>
+<form class="example-form">
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Favorite food" value="Sushi">
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <textarea matInput placeholder="Leave a comment"></textarea>
+  </mat-form-field>
+</form>
+
+<form class="example-form">
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Email" [formControl]="emailFormControl"
+           [errorStateMatcher]="matcher">
+    <mat-hint>Errors appear instantly!</mat-hint>
+    <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+      Please enter a valid email address
+    </mat-error>
+    <mat-error *ngIf="emailFormControl.hasError('required')">
+      Email is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+</form>
+<app-footer></app-footer>
